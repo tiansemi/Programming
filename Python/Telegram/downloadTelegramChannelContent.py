@@ -2,7 +2,7 @@
 
 """
 @Author : Moulo Oholo
-@Contact : moulooholo@gmail.com
+@Contact : tiansemi@outlook.com
 
 Ce programme permet de télécharger les médias d'un canal Telegram
 et de les envoyés sur votre cloud mega du site mega.nz.
