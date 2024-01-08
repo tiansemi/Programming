@@ -1,4 +1,4 @@
-package ci.inphb.Larima.*;
+import ci.inphb.Larima.*;
 
 public class testFenetre {
     public static void main(String[] args) {
