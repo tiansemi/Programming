@@ -1,3 +1,4 @@
+// @outhor : oholo.moulo23@inphb.ci
 /*
 Activité 9
 Une classe contient trois tableaux de N entiers a, b et c. Cette classe dispose d'une méthode void remplir() qui permet de construire le
