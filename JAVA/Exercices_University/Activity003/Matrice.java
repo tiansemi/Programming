@@ -1,3 +1,4 @@
+// @outhor : oholo.moulo23@inphb.ci
 /*
 Exercice java : Activité 3 (page 44)
 Dans cette activité, on souhaite réaliser quelques opérations sur une matrice (tableau à deux dimensions) de N lignes et M colonnes. La matrice sera représentée par une classe Matrice qui va encapsuler un tableau à deux dimensions et les différents dimensions.
