@@ -1,3 +1,4 @@
+// @outhor : oholo.moulo23@inphb.ci
 /*
 Activité 7
 Soient trois tableaux de N entiers: a, b et c. 
