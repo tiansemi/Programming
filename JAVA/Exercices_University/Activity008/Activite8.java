@@ -1,3 +1,4 @@
+// @outhor : oholo.moulo23@inphb.ci
 /*
 Activité 8 :
 Une classe dispose d'une méthode paramétrée par un tableau de chaine de caractères.
