@@ -18,14 +18,25 @@ This Python script compares two KeePass (kdbx) files and highlights the differen
 
 ## Installation
 
-1. Clone the repository:
+```sh
+curl -O https://raw.githubusercontent.com/tiansemi/Programming/main/Python/KeePass/compare_kdbx.py && chmod +x compare_kdbx.py
+```
+
+## Full Installation
 
 ```sh
-git clone https://github.com/yourusername/keepass-diff-checker.git
-cd keepass-diff-checker
+curl -O https://raw.githubusercontent.com/tiansemi/Programming/main/Python/KeePass/install_compare_kdbx.py && chmod +x install_compare_kdbx.sh && sudo ./install_compare_kdbx.sh
 ```
+
+## Full Uninstallation
+
+```sh
+curl -O https://raw.githubusercontent.com/tiansemi/Programming/main/Python/KeePass/uninstall_compare_kdbx.py && chmod +x uninstall_compare_kdbx.sh && sudo ./uninstall_compare_kdbx.sh
+```
+
 
 ## Usage
 
 ```sh
 python3 compare_kdbx.py <path/to/file1.kdbx> <path/to/file2.kdbx> <password1> <password2>
+
