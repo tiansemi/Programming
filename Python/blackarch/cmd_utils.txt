@@ -1,0 +1,16 @@
+# run validMirrorList.py script to update blackarch-mirrorlist
+pacman -Syy
+pacman -Su
+
+{{  error: failed to prepare transaction (conflicting dependencies)
+:: jdk-openjdk and jre-openjdk are in conflict }}
+pacman -Sy jdk-openjdk
+{{  error: failed to prepare transaction (could not satisfy dependencies)
+:: removing jre-openjdk breaks dependency 'jre-openjdk' required by mobsf
+:: removing jre-openjdk breaks dependency 'jre-openjdk' required by tls-attacker }}
+pacman -R mobsf, tls-attacker --no-confirm && pacman -Sy jdk-openjdk
+
+{{  error: jdk-openjdk: signature from "Frederik Schwan <frederik.schwan@linux.com>" is unknown trust
+:: File /var/cache/pacman/pkg/jdk-openjdk-23.0.2.u7-1-x86_64.pkg.tar.zst is corrupted (invalid or corrupted package (PGP signature)). }}
+pacman -Sy archlinux-keyring
+
