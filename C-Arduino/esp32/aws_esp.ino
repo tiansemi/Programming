@@ -1,59 +1,76 @@
 #include <WiFi.h>
 #include <HTTPClient.h>
 
-// Define the pin number for the LED
-const int ledPin = 23; 
-const int bpPin = 22;
-const char* ssid = "TON_SSID";
-const char* password = "TON_MOT_DE_PASSE";
+// Définir les pins
+const int ledPin = 26;
+const int bpPin = 27;
 
-// Remplace par l'URL de ton API Gateway AWS
-const char* serverName = "https://TON_API_ID.execute-api.REGION.amazonaws.com/chemin";
+// Infos WiFi
+const char* ssid = "WIFI ODC";
+const char* password = "Digital1";
 
+// Endpoint API
+const char* serverName = "https://0enopjgto0.execute-api.us-east-2.amazonaws.com/";
+
+// Variables
 unsigned long lastTime = 0;
-unsigned long timerDelay = 10000; // envoi toutes les 10 secondes
-
-volatile int pulseCount = 0;
-
-void IRAM_ATTR handlePulse() {
-  pulseCount++;
-}
 
 void setup() {
   Serial.begin(115200);
-  // initialize the ledPin as an output.
   pinMode(ledPin, OUTPUT);
   pinMode(bpPin, INPUT);
-  attachInterrupt(bpPin, handlePulse, RISING);
 
+  // Connexion WiFi
   WiFi.begin(ssid, password);
+  Serial.print("Connexion WiFi");
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  Serial.println("WiFi connecté");
+  Serial.println("\n✅ WiFi connecté !");
 }
 
-// the loop function runs over and over again forever
 void loop() {
-  if(digitalRead(bpPin)==HIGH){
-    digitalWrite(ledPin,HIGH);
-  }else {
-    digitalWrite(ledPin,LOW);
-   }
-  if ((millis() - lastTime) > timerDelay) {
-    int freq = pulseCount / (timerDelay / 1000); // fréquence en Hz
-    pulseCount = 0;
+  // Si bouton pressé
+  if (digitalRead(bpPin) == HIGH) {
+    Serial.println("🔘 Bouton pressé");
+    digitalWrite(ledPin, HIGH);
     lastTime = millis();
 
     if (WiFi.status() == WL_CONNECTED) {
       HTTPClient http;
       http.begin(serverName);
       http.addHeader("Content-Type", "application/json");
-      String json = "{\"timestamp\": " + String(lastTime) + ", \"frequency\": " + String(freq) + "}";
+
+      // JSON statique à envoyer
+      String json = R"rawliteral(
+        {
+          "Température": "33",
+          "Vitesse_roue": "212",
+          "Nombre_tractions": "21",
+          "Tension": "230",
+          "Intensité": "10"
+        }
+      )rawliteral";
+
+      // Supprime espaces / retours à la ligne
+      json.replace("\n", "");
+      json.replace("  ", "");
+
       int httpResponseCode = http.POST(json);
+
+      Serial.print("📡 Code réponse HTTP : ");
       Serial.println(httpResponseCode);
+      Serial.print("📤 JSON envoyé : ");
+      Serial.println(json);
+
       http.end();
+    } else {
+      Serial.println("⚠️ WiFi non connecté");
     }
+
+    delay(1000);  // Anti-rebond simple
+  } else {
+    digitalWrite(ledPin, LOW);
   }
 }
