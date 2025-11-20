@@ -9,10 +9,10 @@ Ce document propose des solutions Haskell pour HC4T1 → HC4T8. Chaque tâche in
 ```haskell
 -- HC4T1
 weatherReport :: String -> String
-weatherReport "sunny"  = "Il fait beau et ensoleill\233 !"
+weatherReport "sunny"  = "Il fait beau et ensoleillé !"
 weatherReport "rainy"  = "N'oublie pas ton parapluie !"
 weatherReport "cloudy" = "Un peu gris, mais pas de pluie pour l'instant !"
-weatherReport _         = "M\233t\233o inconnue"
+weatherReport _         = "Météo inconnue"
 
 main :: IO ()
 main = do
@@ -56,7 +56,7 @@ gradeComment :: Int -> String
 gradeComment n
     | n >= 90 && n <= 100 = "Excellent !"
     | n >= 70 && n <= 89  = "Bon travail !"
-    | n >= 50 && n <= 69  = "Tu as r\233ussi."
+    | n >= 50 && n <= 69  = "Tu as réussi."
     | n >= 0  && n <= 49  = "Peut mieux faire."
     | otherwise           = "Note invalide."
 
@@ -71,9 +71,9 @@ main = do
 
 ---
 
-## HC4T4 - Tâche 4 : R\233\233crire `specialBirthday` avec pattern matching
+## HC4T4 - Tâche 4 : Réécrire `specialBirthday` avec pattern matching
 
-Voici une r\233\233criture simple avec des cas pr\233d\233finis (exemples).
+Voici une réécriture simple avec des cas prédéfinis (exemples).
 
 ```haskell
 -- HC4T4
@@ -81,9 +81,9 @@ Voici une r\233\233criture simple avec des cas pr\233d\233finis (exemples).
 specialBirthday :: Int -> String
 specialBirthday 0  = "Heureux premier anniversaire !"
 specialBirthday 1  = "Bon premier anniversaire !"
-specialBirthday 18 = "F\233licitations pour tes 18 ans !"
+specialBirthday 18 = "Félicitations pour tes 18 ans !"
 specialBirthday 21 = "Joyeux 21e anniversaire !"
-specialBirthday 50 = "Joyeux demi-si\232cle !"
+specialBirthday 50 = "Joyeux demi-siècle !"
 specialBirthday _  = "Joyeux anniversaire !"
 
 main :: IO ()
@@ -95,9 +95,9 @@ main = do
 
 ---
 
-## HC4T5 - Tâche 5 : Ajouter un cas g\233n\233rique avec message personnalis\233
+## HC4T5 - Tâche 5 : Ajouter un cas générique avec message personnalisé
 
-On enrichit le cas par d\233faut pour inclure l'\226ge dans le message.
+On enrichit le cas par défaut pour inclure l'âge dans le message.
 
 ```haskell
 -- HC4T5
@@ -105,9 +105,9 @@ On enrichit le cas par d\233faut pour inclure l'\226ge dans le message.
 specialBirthday2 :: Int -> String
 specialBirthday2 0  = "Heureux premier anniversaire !"
 specialBirthday2 1  = "Bon premier anniversaire !"
-specialBirthday2 18 = "F\233licitations pour tes 18 ans !"
+specialBirthday2 18 = "Félicitations pour tes 18 ans !"
 specialBirthday2 21 = "Joyeux 21e anniversaire !"
-specialBirthday2 50 = "Joyeux demi-si\232cle !"
+specialBirthday2 50 = "Joyeux demi-siècle !"
 specialBirthday2 age = "Joyeux anniversaire, tu as " ++ show age ++ " ans !"
 
 main :: IO ()
@@ -125,16 +125,16 @@ main = do
 
 whatsInsideThisList :: [a] -> String
 whatsInsideThisList []        = "La liste est vide"
-whatsInsideThisList [x]       = "La liste contient un ":" ++ "\"" ++ "(valeur cach\233e)\"" -- on ne peut pas afficher `x` sans contrainte Show
-whatsInsideThisList [x,y]     = "La liste contient deux \u00E9l\u00E9ments"
-whatsInsideThisList (x:y:z:_) = "La liste contient au moins trois \u00E9l\u00E9ments"
+whatsInsideThisList [x]       = "La liste contient un ":" ++ "\"" ++ "(valeur cachée)\"" -- on ne peut pas afficher `x` sans contrainte Show
+whatsInsideThisList [x,y]     = "La liste contient deux éléments"
+whatsInsideThisList (x:y:z:_) = "La liste contient au moins trois éléments"
 
 -- Version avec Show pour afficher les valeurs
 whatsInsideThisListShow :: Show a => [a] -> String
 whatsInsideThisListShow []        = "La liste est vide"
-whatsInsideThisListShow [x]       = "Un \u00E9l\u00E9ment: " ++ show x
-whatsInsideThisListShow [x,y]     = "Deux \u00E9l\u00E9ments: " ++ show x ++ " et " ++ show y
-whatsInsideThisListShow (x:y:z:_) = "Au moins trois \u00E9l\u00E9ments, premiers: " ++ show x ++ ", " ++ show y ++ ", " ++ show z
+whatsInsideThisListShow [x]       = "Un élément: " ++ show x
+whatsInsideThisListShow [x,y]     = "Deux éléments: " ++ show x ++ " et " ++ show y
+whatsInsideThisListShow (x:y:z:_) = "Au moins trois éléments, premiers: " ++ show x ++ ", " ++ show y ++ ", " ++ show z
 
 main :: IO ()
 main = do
@@ -146,9 +146,9 @@ main = do
 
 ---
 
-## HC4T7 - T\226che 7 : Ignorer des \u00E9l\u00E9ments dans une liste
+## HC4T7 - Tâche 7 : Ignorer des éléments dans une liste
 
-Retourner seulement le premier et le troisi\u00E8me \u00E9l\u00E9ment si pr\u00E9sent.
+Retourner seulement le premier et le troisième élément si présent.
 
 ```haskell
 -- HC4T7
@@ -166,13 +166,13 @@ main = do
 
 ---
 
-## HC4T8 - T\226che 8 : Extraire des valeurs de tuples
+## HC4T8 - Tâche 8 : Extraire des valeurs de tuples
 
 ```haskell
 -- HC4T8
 
 describeTuple :: (Show a, Show b) => (a,b) -> String
-describeTuple (x,y) = "Le premier \u00E9l\u00E9ment est " ++ show x ++ ", le second est " ++ show y
+describeTuple (x,y) = "Le premier élément est " ++ show x ++ ", le second est " ++ show y
 
 main :: IO ()
 main = do
@@ -182,4 +182,4 @@ main = do
 
 ---
 
-Fin du document HC4. Si tu veux que je regroupe tous les `main` dans un seul fichier ex\u00E9cutable avec un petit menu interactif pour lancer les tests, dis-le-moi.
+Fin du document HC4. Si tu veux que je regroupe tous les `main` dans un seul fichier exécutable avec un petit menu interactif pour lancer les tests, dis-le-moi.
