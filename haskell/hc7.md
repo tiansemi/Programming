@@ -32,6 +32,9 @@ main = do
 ```haskell
 -- HC7T2
 
+data Color = Red | Green | Blue
+    deriving (Show, Read, Eq, Enum, Bounded)
+
 instance Ord Color where
     compare Red   Red   = EQ
     compare Red   Green = LT
@@ -48,6 +51,7 @@ main :: IO ()
 main = do
     print (Red < Green)   -- True
     print (Blue > Green)  -- True
+    print (Red > Green)
 ```
 
 ---
@@ -143,10 +147,13 @@ main = do
 ```haskell
 -- HC7T8
 
+data Shape = Circle Double | Rectangle Double Double
+    deriving (Show, Read)
+
 parseShape :: String -> Maybe Shape
 parseShape s = case reads s of
     [(sh, "")] -> Just sh
-    _            -> Nothing
+    _          -> Nothing
 
 -- tests
 main :: IO ()
@@ -162,6 +169,9 @@ main = do
 
 ```haskell
 -- HC7T9
+
+data Shape = Circle Double | Rectangle Double Double
+    deriving (Show, Read)
 
 class Describable a where
     describe :: a -> String
@@ -187,6 +197,9 @@ main = do
 
 ```haskell
 -- HC7T10
+
+data Shape = Circle Double | Rectangle Double Double
+    deriving (Show, Read)
 
 -- prend deux valeurs du même type a, qui sont Describable et Ord
 describeAndCompare :: (Describable a, Ord a) => a -> a -> String
