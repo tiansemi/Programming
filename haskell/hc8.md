@@ -108,7 +108,7 @@ main = do
 ```haskell
 -- HC8T6
 
--- Les champs `center` et `color` sont partag\u00E9s entre constructeurs
+-- Les champs `center` et `color` sont partagés entre constructeurs
 data ShapeR = CircleR { center :: (Float,Float), color :: String, radius :: Float }
             | RectangleR { center :: (Float,Float), color :: String, width :: Float, height :: Float }
     deriving (Show)
@@ -127,7 +127,7 @@ main = do
 
 ---
 
-## HC8T7 : Types de donn\u00E9es et description d'animaux
+## HC8T7 : Types de données et description d'animaux
 
 ```haskell
 -- HC8T7
@@ -170,7 +170,7 @@ main = do
 
 ---
 
-## HC8T9 : Type enregistrement Transaction et fonction associ\u00E9e
+## HC8T9 : Type enregistrement Transaction et fonction associée
 
 ```haskell
 -- HC8T9
@@ -203,7 +203,7 @@ data Book = Book { title :: String, author :: String, year :: Int }
     deriving (Show)
 
 myBook :: Book
-myBook = Book { title = "Le Petit Prince", author = "Antoine de Saint-Exup\u00E9ry", year = 1943 }
+myBook = Book { title = "Le Petit Prince", author = "Antoine de Saint-Exupéry", year = 1943 }
 
 main :: IO ()
 main = do
@@ -212,4 +212,4 @@ main = do
 
 ---
 
-Fin du document HC8. Souhaites-tu que je g\u00E9n\u00E8re des fichiers `.hs` individuels pour chaque exercice ?
+Fin du document HC8. Souhaites-tu que je génère des fichiers `.hs` individuels pour chaque exercice ?
