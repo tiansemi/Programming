@@ -1,6 +1,7 @@
 /*
  * Arduino Mega 2560: Set all pins to HIGH
  * Total pins covered: 70 (0-53 digital, 54-69 analog)
+ * https://www.build-electronic-circuits.com/arduino-blink-led/
  */
 
 void setup() {
