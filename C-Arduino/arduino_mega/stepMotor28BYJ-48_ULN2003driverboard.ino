@@ -3,6 +3,7 @@
  * StepMotor 1 : IN1=D53/IN2=D51/IN3=D49/IN4=D47
  * StepMotor 2 : IN1=D50/IN2=D46/IN3=D48/IN4=D52
  * https://www.codrey.com/electronics/arduino-stepper-motor-a-quick-revision/
+ * https://forum.arduino.cc/t/reproducing-uln2003-motor-driver-board-capacitor-needed/639090
  */
  
 #include <Stepper.h>
