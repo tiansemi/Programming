@@ -1,29 +1,47 @@
-import React, { useState } from 'react';
-import { authService } from '../services/api';
-import { useAuth } from '../context/AuthContext';
+import React, { useState } from 'react'
+import { authService } from '../services/api'
+import { useAuth } from '../context/AuthContext'
+import createLogger from '../utils/logger'
+
+const logger = createLogger('Login')
 
 const Login = ({ onSuccess }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  const { login } = useAuth()
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
+    e.preventDefault()
+    logger.info('=== LOGIN FORM SUBMITTED ===', { email })
+    
+    setLoading(true)
+    setError('')
 
     try {
-      const response = await authService.login(email, password);
-      login(response.data.user, response.data.token);
-      onSuccess?.();
+      logger.debug('Sending login request to API', { email })
+      const response = await authService.login(email, password)
+      
+      logger.success('API login response received', {
+        user: response.data.user?.username,
+        tokenLength: response.data.token?.length,
+      })
+
+      logger.debug('Calling context login()...', response.data)
+      login(response.data.user, response.data.token)
+      
+      logger.success('Login context updated successfully')
+      logger.debug('Calling onSuccess callback...')
+      onSuccess?.()
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      const errorMsg = err.response?.data?.message || 'Login failed'
+      logger.error('Login failed', err)
+      setError(errorMsg)
     } finally {
-      setLoading(false);
+      setLoading(false)
     }
-  };
+  }
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ddd', borderRadius: '8px' }}>

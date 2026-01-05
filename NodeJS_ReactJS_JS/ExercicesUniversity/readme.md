@@ -290,3 +290,26 @@ Ce projet a été créé pour fins pédagogiques. N'hésitez pas à l'améliorer
 ---
 
 Bon codage ! 🚀📚
+
+
+---
+
+# contexte 
+
+# Projet Node.js - React.js : Mini-système de Gestion de Bibliothèque Début : 29-11-2025
+Durée : 1 mois
+Nombre de groupes : 2
+Présentation de 15/20 mins / groupe
+
+1. Fonctionnalités
+   • Gestion des livres (CRUD)
+   • Gestion des emprunts
+   • Mise en favoris
+   • Authentification utilisateur (admin / utilisateur)
+   • Recherche de livres
+2. Architecture
+   Frontend React
+   ↓ API REST
+   Backend Node.js (Express)
+   ↓
+   MongoDB (Books, Users, Emprunts)
